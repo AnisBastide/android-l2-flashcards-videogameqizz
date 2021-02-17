@@ -22,6 +22,7 @@
         android:id="@+id/radioAnswerRadioGroup"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageQuestionImageView"
         app:layout_constraintStart_toStartOf="@+id/imageQuestionImageView"
@@ -53,9 +54,10 @@
         android:text="Quel est le jeux sur l'image ?"
         app:layout_constraintBottom_toTopOf="@+id/radioAnswerRadioGroup"
         app:layout_constraintEnd_toEndOf="@+id/imageQuestionImageView"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="@+id/imageQuestionImageView"
         app:layout_constraintTop_toBottomOf="@+id/imageQuestionImageView"
-        app:layout_constraintVertical_bias="0.542" />
+        app:layout_constraintVertical_bias="0.244" />
 
     <Button
         android:id="@+id/submitButton"
@@ -65,6 +67,17 @@
         android:layout_marginBottom="24dp"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageQuestionImageView"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/imageQuestionImageView"
+        app:layout_constraintTop_toBottomOf="@+id/radioAnswerRadioGroup"
+        app:layout_constraintVertical_bias="0.833" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="@+id/imageQuestionImageView"
         app:layout_constraintStart_toStartOf="@+id/imageQuestionImageView"
         app:layout_constraintTop_toBottomOf="@+id/radioAnswerRadioGroup" />
