@@ -2,7 +2,10 @@ package com.theo.videogameqizz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,14 +23,30 @@ import java.util.List;
 public class FlashCardActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Question question;
+    Dialog dialog;
+    private ImageView imageView;
+    private TextView textQuestion;
+    private RadioButton answerOne;
+    private RadioButton answerTwo;
+    private RadioButton answerThree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flash_card);
 
+        dialog = new Dialog(this);
+
         Button button = findViewById(R.id.submitButton);
         button.setOnClickListener(this);
+
+        imageView = findViewById(R.id.imageQuestionImageView);
+        textQuestion = findViewById(R.id.QuestionTextView);
+        answerOne = findViewById(R.id.radioAnswerRadionButtonOne);
+        answerTwo = findViewById(R.id.radioAnswerRadionButtonTwo);
+        answerThree = findViewById(R.id.radioAnswerRadionButtonThree);
+
+        imageView.setOnClickListener(this);
 
         Question questionTest = new Question("Quel est ce jeu?",R.drawable.supersmashbros,
                 new Answer("super smash bros","mario","call of duty")
@@ -43,7 +62,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         RadioGroup radioGroup = findViewById(R.id.radioAnswerRadioGroup);
         // Returns an integer which represents the selected radio button's ID
         int selected = radioGroup.getCheckedRadioButtonId();
-        if (selected == -1) {
+        if (selected == -1 && v.getId()==R.id.submitButton) {
             Toast.makeText(FlashCardActivity.this, "veuillez selectionner une reponse", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -63,21 +82,18 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
                     result.setTextColor(Color.RED);
                 }
                 break;
+            case R.id.imageQuestionImageView:
+                ShowPopup();
+                break;
             default:
                 break;
         }
     }
 
     private void setQuestionView(Question question){
-        ImageView imageView =findViewById(R.id.imageQuestionImageView);
         imageView.setImageResource(question.media);
 
-        TextView textQuestion = findViewById(R.id.QuestionTextView);
         textQuestion.setText(question.question);
-
-        RadioButton answerOne = findViewById(R.id.radioAnswerRadionButtonOne);
-        RadioButton answerTwo = findViewById(R.id.radioAnswerRadionButtonTwo);
-        RadioButton answerThree = findViewById(R.id.radioAnswerRadionButtonThree);
 
         List<String> answers = new ArrayList<>();
         answers.add(question.answer.getGoodAnswer());
@@ -89,5 +105,10 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         answerOne.setText(answers.get(0));
         answerTwo.setText(answers.get(1));
         answerThree.setText(answers.get(2));
+    }
+    public void ShowPopup() {
+        dialog.setContentView(R.layout.popup_card);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }
