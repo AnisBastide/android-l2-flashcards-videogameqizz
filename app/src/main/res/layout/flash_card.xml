@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FlashCard">
+    tools:context=".FlashCardActivity">
 
     <ImageView
         android:id="@+id/imageQuestionImageView"
@@ -29,19 +29,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imageQuestionImageView">
 
         <RadioButton
-            android:id="@+id/radioAnswerRadionButton1"
+            android:id="@+id/radioAnswerRadionButtonOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Call of duty" />
 
         <RadioButton
-            android:id="@+id/radioAnswerRadionButton2"
+            android:id="@+id/radioAnswerRadionButtonTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Smash bros ultimate" />
 
         <RadioButton
-            android:id="@+id/radioAnswerRadionButton3"
+            android:id="@+id/radioAnswerRadionButtonThree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mario Bros" />
