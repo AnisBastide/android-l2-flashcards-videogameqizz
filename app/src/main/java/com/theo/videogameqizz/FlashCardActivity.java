@@ -59,7 +59,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
                     result.setTextColor(Color.GREEN);
                 }
                 else{
-                    result.setText("T'es nul bg la bonne réponse cest super smash");
+                    result.setText("T'es nul bg la bonne réponse etait " + question.answer.getGoodAnswer());
                     result.setTextColor(Color.RED);
                 }
                 break;
