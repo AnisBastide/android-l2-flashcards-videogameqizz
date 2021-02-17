@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -107,7 +105,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         answerThree.setText(answers.get(2));
     }
     public void ShowPopup() {
-        dialog.setContentView(R.layout.popup_card);
+        dialog.setContentView(R.layout.popup_image);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
