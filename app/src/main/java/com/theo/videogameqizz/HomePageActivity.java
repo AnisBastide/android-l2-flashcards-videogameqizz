@@ -3,17 +3,16 @@ package com.theo.videogameqizz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class HomePage extends AppCompatActivity implements View.OnClickListener {
+public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private HomePage TAG;
     Dialog dialog;
 
     @Override
@@ -47,6 +46,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
+        Intent about = new Intent(this, AboutActivity.class);
         switch (view.getId()){
             case R.id.startButton:
                 ShowPopup();
@@ -55,7 +55,11 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
                 Toast.makeText(this, "qizz List", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.aboutButton:
-                Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
+                String[] name = {"Anis Bastide", "Jimmy Lai", "Theovady Moutty"};
+                String[] mail = {"anis.bastide@edu.itescia.fr", "jimmy.lai@edu.itescia.fr", "theovady.moutty@edu.itescia.fr"};
+                about.putExtra("name", name);
+                about.putExtra("mail", mail);
+                startActivity(about);
                 break;
             case R.id.easyButton:
                 break;

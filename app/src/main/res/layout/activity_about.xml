@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <TextView
+        android:id="@+id/aboutAppTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VideoGameQizz"
+        android:textColor="@android:color/white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <TextView
+        android:id="@+id/aboutVersionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="version"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/aboutAppTextView"
+        app:layout_constraintStart_toStartOf="@+id/aboutAppTextView"
+        app:layout_constraintTop_toBottomOf="@+id/aboutAppTextView" />
+
+    <TextView
+        android:id="@+id/aboutByTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="By"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/aboutAppTextView"
+        app:layout_constraintStart_toStartOf="@+id/aboutAppTextView"
+        app:layout_constraintTop_toBottomOf="@+id/aboutVersionTextView" />
+
+    <TextView
+        android:id="@+id/aboutNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Name"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/aboutAppTextView"
+        app:layout_constraintStart_toStartOf="@+id/aboutAppTextView"
+        app:layout_constraintTop_toBottomOf="@+id/aboutByTextView" />
+
+    <TextView
+        android:id="@+id/aboutContactTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:textColor="@android:color/white"
+        android:text="Contact"
+        app:layout_constraintEnd_toEndOf="@+id/aboutAppTextView"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="@+id/aboutAppTextView"
+        app:layout_constraintTop_toBottomOf="@+id/aboutNameTextView" />
+
+    <TextView
+        android:id="@+id/aboutMailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Mail"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/aboutAppTextView"
+        app:layout_constraintStart_toStartOf="@+id/aboutAppTextView"
+        app:layout_constraintTop_toBottomOf="@+id/aboutContactTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
