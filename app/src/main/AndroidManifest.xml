@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoGameQizz">
-        <activity android:name=".FlashCardActivity">
+        <activity android:name=".FlashCardActivity"></activity>
+        <activity android:name=".AboutActivity"
+            android:theme="@style/Background"></activity>
+        <activity
+            android:name=".HomePageActivity"
+            android:theme="@style/Background">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
