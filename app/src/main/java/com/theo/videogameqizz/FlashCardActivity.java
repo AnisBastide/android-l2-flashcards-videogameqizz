@@ -56,6 +56,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         this.questions =intent.getParcelableExtra("questions");
         if(this.questions.getIndex()==this.questions.getQuestions().size()){
             Intent homePage=new Intent(this,HomePageActivity.class);
+            homePage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(homePage);
             finish();
             return;
