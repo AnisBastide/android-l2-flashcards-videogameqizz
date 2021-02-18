@@ -54,18 +54,24 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         Intent intent = getIntent();
         if(intent != null && intent.hasExtra("questions")){
         this.questions =intent.getParcelableExtra("questions");
+        if(this.questions.getIndex()==this.questions.getQuestions().size()){
+            Intent homePage=new Intent(this,HomePageActivity.class);
+            startActivity(homePage);
+            return;
+        }
         question=this.questions.getQuestions().get(this.questions.getIndex());
         }
-
-        Question questionTest = new Question("Quel est ce jeu?",R.drawable.supersmashbros,
-                new Answer("super smash bros","mario","call of duty")
-        );
-        Question questionTestTwo = new Question("Quel est ce jeu 2?",R.drawable.supersmashbros,
-                new Answer("super smash bros","mario","call of duty")
-        );
-        this.questions = new Questions(questionTest,questionTestTwo);
-        this.questions.shuffleQuestions();
-        question=this.questions.getQuestions().get(this.questions.getIndex());
+        else{
+            Question questionTest = new Question("Quel est ce jeu?",R.drawable.supersmashbros,
+                    new Answer("super smash bros","mario","call of duty")
+            );
+            Question questionTestTwo = new Question("Quel est ce jeu 2?",R.drawable.supersmashbros,
+                    new Answer("super smash bros","mario","call of duty")
+            );
+            this.questions = new Questions(questionTest,questionTestTwo);
+            this.questions.shuffleQuestions();
+            question=this.questions.getQuestions().get(this.questions.getIndex());
+        }
         setQuestionView(question);
     }
 

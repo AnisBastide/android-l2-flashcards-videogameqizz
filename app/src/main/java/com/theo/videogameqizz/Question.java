@@ -11,17 +11,7 @@ public class Question implements Parcelable{
     protected Question(Parcel in) {
         question = in.readString();
         media = in.readInt();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(question);
-        dest.writeInt(media);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        answer = in.readParcelable(Answer.class.getClassLoader());
     }
 
     public static final Creator<Question> CREATOR = new Creator<Question>() {
@@ -52,5 +42,17 @@ public class Question implements Parcelable{
         this.question = question;
         this.media = media;
         this.answer = answer;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(question);
+        dest.writeInt(media);
+        dest.writeParcelable(answer, flags);
     }
 }
