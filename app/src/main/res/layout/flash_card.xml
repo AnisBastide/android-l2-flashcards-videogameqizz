@@ -83,4 +83,19 @@
         app:layout_constraintStart_toStartOf="@+id/imageQuestionImageView"
         app:layout_constraintTop_toBottomOf="@+id/radioAnswerRadioGroup" />
 
+    <TextView
+        android:id="@+id/questionIndexTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:background="#673AB7"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        app:drawableTint="#673AB7"
+        app:layout_constraintBottom_toTopOf="@+id/imageQuestionImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

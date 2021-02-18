@@ -32,6 +32,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
     private RadioButton answerTwo;
     private RadioButton answerThree;
     private Button submitButton;
+    private TextView questionIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         answerOne = findViewById(R.id.radioAnswerRadionButtonOne);
         answerTwo = findViewById(R.id.radioAnswerRadionButtonTwo);
         answerThree = findViewById(R.id.radioAnswerRadionButtonThree);
+        questionIndex = findViewById(R.id.questionIndexTextView);
 
         imageView.setOnClickListener(this);
 
@@ -132,6 +134,10 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         answers.add(question.answer.getGoodAnswer());
         answers.add(question.answer.getOtherAnswerOne());
         answers.add(question.answer.getOtherAnswerTwo());
+
+        String questionIndexText = questions.getIndex()+1 + "/" + questions.getQuestions().size();
+        questionIndex.setText(questionIndexText);
+
 
         Collections.shuffle(answers);
 
