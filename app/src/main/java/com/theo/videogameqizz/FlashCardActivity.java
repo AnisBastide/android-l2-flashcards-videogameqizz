@@ -57,6 +57,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         if(this.questions.getIndex()==this.questions.getQuestions().size()){
             Intent homePage=new Intent(this,HomePageActivity.class);
             startActivity(homePage);
+            finish();
             return;
         }
         question=this.questions.getQuestions().get(this.questions.getIndex());
@@ -92,6 +93,8 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
             questions.incrementIndex();
             nextQuestions.putExtra("questions",questions);
             startActivity(nextQuestions);
+            finish();
+            return;
         }
 
         RadioButton selectedButton = findViewById(selected);
