@@ -48,12 +48,13 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         Intent about = new Intent(this, AboutActivity.class);
         Intent questions = new Intent(this,FlashCardActivity.class);
+        Intent questionList = new Intent(this,QuestionListActivity.class);
         switch (view.getId()){
             case R.id.startButton:
                 ShowPopup();
                 break;
             case R.id.qizzListButton:
-                Toast.makeText(this, "qizz List", Toast.LENGTH_SHORT).show();
+                startActivity(questionList);
                 break;
             case R.id.aboutButton:
                 String[] name = {"Anis Bastide", "Jimmy Lai", "Theovady Moutty"};

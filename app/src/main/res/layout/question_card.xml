@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/questionCardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/border">
+
+    <ImageView
+        android:id="@+id/questionListImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/supersmashbros" />
+
+    <TextView
+        android:id="@+id/questionListTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/questionListImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/answer1ListTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/questionListTextView"
+        app:layout_constraintStart_toStartOf="@+id/questionListTextView"
+        app:layout_constraintTop_toBottomOf="@+id/questionListTextView" />
+
+    <TextView
+        android:id="@+id/answer2ListTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/answer1ListTextView"
+        app:layout_constraintEnd_toStartOf="@+id/answer1ListTextView"
+        app:layout_constraintStart_toEndOf="@+id/questionListImageView"
+        app:layout_constraintTop_toTopOf="@+id/answer1ListTextView" />
+
+    <TextView
+        android:id="@+id/answer3ListTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/answer1ListTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/answer1ListTextView"
+        app:layout_constraintTop_toTopOf="@+id/answer1ListTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

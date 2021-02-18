@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoGameQizz">
-        <activity android:name=".ResultActivity"
+        <activity android:name=".QuestionListActivity"
             android:theme="@style/Background"></activity>
-        <activity android:name=".FlashCardActivity" />
+        <activity
+            android:name=".ResultActivity"
+            android:theme="@style/Background" />
+        <activity android:name=".FlashCardActivity"
+            android:theme="@style/Background"/>
         <activity
             android:name=".AboutActivity"
             android:theme="@style/Background" />

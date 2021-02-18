@@ -48,18 +48,6 @@
             android:text="Mario Bros" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/QuestionTextView"
-        android:layout_width="185dp"
-        android:layout_height="20dp"
-        android:text="Quel est le jeux sur l'image ?"
-        app:layout_constraintBottom_toTopOf="@+id/radioAnswerRadioGroup"
-        app:layout_constraintEnd_toEndOf="@+id/imageQuestionImageView"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/imageQuestionImageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageQuestionImageView"
-        app:layout_constraintVertical_bias="0.244" />
-
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
@@ -112,5 +100,16 @@
         app:layout_constraintHorizontal_bias="0.856"
         app:layout_constraintStart_toStartOf="@+id/questionIndexTextView"
         app:layout_constraintTop_toTopOf="@+id/questionIndexTextView" />
+
+    <TextView
+        android:id="@+id/QuestionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioAnswerRadioGroup"
+        app:layout_constraintEnd_toEndOf="@+id/imageQuestionImageView"
+        app:layout_constraintStart_toStartOf="@+id/imageQuestionImageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageQuestionImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
