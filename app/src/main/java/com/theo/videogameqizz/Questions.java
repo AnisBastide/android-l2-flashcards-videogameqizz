@@ -10,6 +10,9 @@ import java.util.List;
 public class Questions implements Parcelable {
     private List<Question> questions = new ArrayList<>();
     private Integer index = 0;
+    private Integer points = 0;
+    private String difficulty;
+
 
     protected Questions(Parcel in) {
         questions = in.createTypedArrayList(Question.CREATOR);
@@ -18,6 +21,12 @@ public class Questions implements Parcelable {
         } else {
             index = in.readInt();
         }
+        if (in.readByte() == 0) {
+            points = null;
+        } else {
+            points = in.readInt();
+        }
+        difficulty = in.readString();
     }
 
     public static final Creator<Questions> CREATOR = new Creator<Questions>() {
@@ -35,8 +44,19 @@ public class Questions implements Parcelable {
     public Integer getIndex() {
         return index;
     }
+    public Integer getPoints() {
+        return points;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
     public void incrementIndex(){
         index++;
+    }
+    public void incrementPoints(){
+        points++;
     }
     public List<Question> getQuestions() {
         return questions;
@@ -45,7 +65,8 @@ public class Questions implements Parcelable {
         Collections.shuffle(questions);
     }
 
-    public Questions(Question ...questions) {
+    public Questions(String difficulty,Question ...questions) {
+        this.difficulty=difficulty;
         for (Question question:questions) {
             this.questions.add(question);
         }
@@ -65,5 +86,12 @@ public class Questions implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeInt(index);
         }
+        if (points == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(points);
+        }
+        dest.writeString(difficulty);
     }
 }

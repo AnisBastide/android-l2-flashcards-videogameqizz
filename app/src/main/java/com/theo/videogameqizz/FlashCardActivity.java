@@ -33,6 +33,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
     private RadioButton answerThree;
     private Button submitButton;
     private TextView questionIndex;
+    private TextView difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +58,9 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         if(intent != null && intent.hasExtra("questions")){
         this.questions =intent.getParcelableExtra("questions");
         if(this.questions.getIndex()==this.questions.getQuestions().size()){
-            Intent homePage=new Intent(this,HomePageActivity.class);
-            homePage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(homePage);
+            Intent result = new Intent(this,ResultActivity.class);
+            result.putExtra("questions",questions);
+            startActivity(result);
             finish();
             return;
         }
@@ -72,7 +73,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
             Question questionTestTwo = new Question("Quel est ce jeu 2?",R.drawable.supersmashbros,
                     new Answer("super smash bros","mario","call of duty")
             );
-            this.questions = new Questions(questionTest,questionTestTwo);
+            this.questions = new Questions("easy",questionTest,questionTestTwo);
             this.questions.shuffleQuestions();
             question=this.questions.getQuestions().get(this.questions.getIndex());
         }
@@ -109,6 +110,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
                 if (selectedButton.getText().equals(question.answer.getGoodAnswer())) {
                     result.setText("Bien joué");
                     result.setTextColor(Color.GREEN);
+                    questions.incrementPoints();
                 }
                 else{
                     result.setText("T'es nul bg la bonne réponse etait " + question.answer.getGoodAnswer());
@@ -137,6 +139,8 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
 
         String questionIndexText = questions.getIndex()+1 + "/" + questions.getQuestions().size();
         questionIndex.setText(questionIndexText);
+        difficulty = findViewById(R.id.difficultyTextView);
+        difficulty.setText(questions.getDifficulty());
 
 
         Collections.shuffle(answers);
