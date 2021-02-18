@@ -3,10 +3,12 @@ package com.theo.videogameqizz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -20,13 +22,16 @@ import java.util.List;
 
 public class FlashCardActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Question question;
+    Question question;
+    Questions questions;
     Dialog dialog;
+    boolean answered;
     private ImageView imageView;
     private TextView textQuestion;
     private RadioButton answerOne;
     private RadioButton answerTwo;
     private RadioButton answerThree;
+    private Button submitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +40,8 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
 
         dialog = new Dialog(this);
 
-        Button button = findViewById(R.id.submitButton);
-        button.setOnClickListener(this);
+        submitButton = findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(this);
 
         imageView = findViewById(R.id.imageQuestionImageView);
         textQuestion = findViewById(R.id.QuestionTextView);
@@ -46,11 +51,21 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
 
         imageView.setOnClickListener(this);
 
+        Intent intent = getIntent();
+        if(intent != null && intent.hasExtra("questions")){
+        this.questions =intent.getParcelableExtra("questions");
+        question=this.questions.getQuestions().get(this.questions.getIndex());
+        }
+
         Question questionTest = new Question("Quel est ce jeu?",R.drawable.supersmashbros,
                 new Answer("super smash bros","mario","call of duty")
         );
-        question =questionTest;
-
+        Question questionTestTwo = new Question("Quel est ce jeu 2?",R.drawable.supersmashbros,
+                new Answer("super smash bros","mario","call of duty")
+        );
+        this.questions = new Questions(questionTest,questionTestTwo);
+        this.questions.shuffleQuestions();
+        question=this.questions.getQuestions().get(this.questions.getIndex());
         setQuestionView(question);
     }
 
@@ -63,6 +78,14 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         if (selected == -1 && v.getId()==R.id.submitButton) {
             Toast.makeText(FlashCardActivity.this, "veuillez selectionner une reponse", Toast.LENGTH_SHORT).show();
             return;
+        }
+        if(answered && v.getId()== R.id.submitButton){
+            ViewGroup viewGroup=findViewById(R.id.flashCard);
+            viewGroup.invalidate();
+            Intent nextQuestions = new Intent(this,FlashCardActivity.class);
+            questions.incrementIndex();
+            nextQuestions.putExtra("questions",questions);
+            startActivity(nextQuestions);
         }
 
         RadioButton selectedButton = findViewById(selected);
@@ -79,6 +102,8 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
                     result.setText("T'es nul bg la bonne réponse etait " + question.answer.getGoodAnswer());
                     result.setTextColor(Color.RED);
                 }
+                answered=true;
+                submitButton.setText("Next Question");
                 break;
             case R.id.imageQuestionImageView:
                 ShowPopup();
