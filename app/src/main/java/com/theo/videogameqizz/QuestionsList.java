@@ -2,6 +2,7 @@ package com.theo.videogameqizz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import java.util.List;
 public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder> implements View.OnClickListener {
 
     private final List<Question> questions;
-    Question question;
+    int i;
 
     public QuestionsList(List<Question> questions) {
         this.questions = questions;
@@ -35,7 +36,7 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull QuestionsList.ViewHolder holder, int position) {
-        question = questions.get(position);
+        Question question = questions.get(position);
 
         switch (question.getMedia().getType()) {
             case "image":
@@ -54,6 +55,7 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
         holder.answer2.setText(question.answer.getOtherAnswerOne());
         holder.answer3.setText(question.answer.getOtherAnswerTwo());
 
+        holder.itemView.setTag(question);
         holder.itemView.setOnClickListener(this);
     }
 
@@ -66,6 +68,7 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.questionCardLayout:
+                Question question = (Question) view.getTag();
                 List<Question> quest = new ArrayList<>();
                 quest.add(question);
                 Context context = view.getContext();
