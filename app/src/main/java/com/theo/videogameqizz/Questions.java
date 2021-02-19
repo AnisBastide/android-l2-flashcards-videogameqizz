@@ -13,7 +13,6 @@ public class Questions implements Parcelable {
     private Integer points = 0;
     private String difficulty;
 
-
     protected Questions(Parcel in) {
         questions = in.createTypedArrayList(Question.CREATOR);
         if (in.readByte() == 0) {
@@ -44,6 +43,7 @@ public class Questions implements Parcelable {
     public Integer getIndex() {
         return index;
     }
+
     public Integer getPoints() {
         return points;
     }
@@ -52,22 +52,25 @@ public class Questions implements Parcelable {
         return difficulty;
     }
 
-    public void incrementIndex(){
+    public void incrementIndex() {
         index++;
     }
-    public void incrementPoints(){
+
+    public void incrementPoints() {
         points++;
     }
+
     public List<Question> getQuestions() {
         return questions;
     }
-    public void shuffleQuestions(){
+
+    public void shuffleQuestions() {
         Collections.shuffle(questions);
     }
 
-    public Questions(String difficulty,Question ...questions) {
-        this.difficulty=difficulty;
-        for (Question question:questions) {
+    public Questions(String difficulty, Question... questions) {
+        this.difficulty = difficulty;
+        for (Question question : questions) {
             this.questions.add(question);
         }
     }

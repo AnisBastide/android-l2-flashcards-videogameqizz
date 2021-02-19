@@ -5,7 +5,8 @@
     android:id="@+id/flashCard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FlashCardActivity">
+    tools:context=".FlashCardActivity"
+    tools:visibility="visible">
 
     <ImageView
         android:id="@+id/imageQuestionImageView"
@@ -105,6 +106,15 @@
         app:layout_constraintStart_toStartOf="@+id/questionIndexTextView"
         app:layout_constraintTop_toTopOf="@+id/questionIndexTextView" />
 
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/videoView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/QuestionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageQuestionImageView"
+        app:showFullScreenButton="false"/>
     <TextView
         android:id="@+id/QuestionTextView"
         android:layout_width="wrap_content"

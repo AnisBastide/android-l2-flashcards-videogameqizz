@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder> implements View.OnClickListener {
@@ -32,7 +34,20 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull QuestionsList.ViewHolder holder, int position) {
         Question question = questions.get(position);
-        holder.questionImage.setImageResource(question.media);
+
+        switch (question.getMedia().getType()) {
+            case "image":
+                Picasso.with(holder.questionImage.getContext()).load(question.getMedia().getLink()).into(holder.questionImage);
+                break;
+            case "video":
+//                videoView.getYouTubePlayerWhenReady(youTubePlayer -> {
+//                    youTubePlayer.cueVideo(question.getMedia().getLink(), 0);
+//                });
+                break;
+            default:
+                break;
+        }
+
         holder.questions.setText(question.question);
         holder.answer1.setText(question.answer.getGoodAnswer());
         holder.answer2.setText(question.answer.getOtherAnswerOne());

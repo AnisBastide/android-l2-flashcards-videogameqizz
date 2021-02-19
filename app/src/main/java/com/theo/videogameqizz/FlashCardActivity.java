@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,6 +55,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
     private Button submitButton;
     private TextView questionIndex;
     private TextView difficulty;
+    private YouTubePlayerView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         submitButton.setOnClickListener(this);
 
         imageView = findViewById(R.id.imageQuestionImageView);
+        videoView = findViewById(R.id.videoView);
         textQuestion = findViewById(R.id.QuestionTextView);
         answerOne = findViewById(R.id.radioAnswerRadionButtonOne);
         answerTwo = findViewById(R.id.radioAnswerRadionButtonTwo);
@@ -82,10 +89,10 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         question=this.questions.getQuestions().get(this.questions.getIndex());
         }
         else{
-            Question questionTest = new Question("Quel est ce jeu?",R.drawable.supersmashbros,
+            Question questionTest = new Question("Quel est ce jeu?",new Media("image","https://www.smashbros.com/assets_v2/img/top/hero05_en.jpg"),
                     new Answer("super smash bros","mario","call of duty")
             );
-            Question questionTestTwo = new Question("Quel est ce jeu 2?",R.drawable.supersmashbros,
+            Question questionTestTwo = new Question("Quel est ce jeu 2?",new Media("video","https://youtu.be/gj-9qN_IPxw"),
                     new Answer("super smash bros","mario","call of duty")
             );
             this.questions = new Questions("easy",questionTest,questionTestTwo);
@@ -143,7 +150,22 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void setQuestionView(Question question){
-        imageView.setImageResource(question.media);
+        switch (question.getMedia().getType()){
+            case "image":
+                Picasso.with(this).load(question.getMedia().getLink()).into(imageView);
+                videoView.setVisibility(View.GONE);
+                imageView.setVisibility(View.VISIBLE);
+                break;
+            case "video":
+               videoView.getYouTubePlayerWhenReady(youTubePlayer -> {
+                   youTubePlayer.cueVideo(question.getMedia().getLink(),0);
+               });
+                imageView.setVisibility(View.GONE);
+                videoView.setVisibility(View.VISIBLE);
+                break;
+            default:
+                break;
+        }
 
         textQuestion.setText(question.question);
 
@@ -167,6 +189,8 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
     public void ShowPopup() {
         dialog.setContentView(R.layout.popup_image);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ImageView popupImage =dialog.getWindow().findViewById(R.id.popupImageView);
+        Picasso.with(this).load(question.getMedia().getLink()).into(popupImage);
         dialog.show();
     }
 }

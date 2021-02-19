@@ -5,12 +5,13 @@ import android.os.Parcelable;
 
 public class Question implements Parcelable{
     String question;
-    int media;
+    Media media;
     Answer answer;
+
 
     protected Question(Parcel in) {
         question = in.readString();
-        media = in.readInt();
+        media = in.readParcelable(Media.class.getClassLoader());
         answer = in.readParcelable(Answer.class.getClassLoader());
     }
 
@@ -30,7 +31,7 @@ public class Question implements Parcelable{
         return question;
     }
 
-    public int getMedia() {
+    public Media getMedia() {
         return media;
     }
 
@@ -38,7 +39,7 @@ public class Question implements Parcelable{
         return answer;
     }
 
-    public Question(String question, int media, Answer answer) {
+    public Question(String question, Media media, Answer answer) {
         this.question = question;
         this.media = media;
         this.answer = answer;
@@ -52,7 +53,7 @@ public class Question implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(question);
-        dest.writeInt(media);
+        dest.writeParcelable(media, flags);
         dest.writeParcelable(answer, flags);
     }
 }
