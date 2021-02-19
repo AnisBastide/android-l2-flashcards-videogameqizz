@@ -49,7 +49,6 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
             default:
                 break;
         }
-
         holder.questions.setText(question.question);
         holder.answer1.setText(question.answer.getGoodAnswer());
         holder.answer2.setText(question.answer.getOtherAnswerOne());
