@@ -56,14 +56,16 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         imageView.setOnClickListener(this);
 
         Intent intent = getIntent();
-        Integer difficultyIntent = intent.getIntExtra("DifficultyString", 0);
+
+        Intent difficulty = getIntent();
+        Integer difficultyIntent = difficulty.getIntExtra("DifficultyString", 0);
 
         Log.d("theotagdifficulty", difficultyIntent + "");
 
         if(intent != null && intent.hasExtra("questions")){
-        this.questions =intent.getParcelableExtra("questions");
+        this.questions = intent.getParcelableExtra("questions");
 
-        if(this.questions.getIndex()==this.questions.getQuestions().size()){
+        if(this.questions.getIndex() == this.questions.getQuestions().size()){
             Intent result = new Intent(this,ResultActivity.class);
             result.putExtra("questions",questions);
             startActivity(result);
