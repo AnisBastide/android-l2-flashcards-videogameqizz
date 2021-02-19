@@ -68,7 +68,7 @@ public class Questions implements Parcelable {
         Collections.shuffle(questions);
     }
 
-    public Questions(String difficulty, Question... questions) {
+    public Questions(String difficulty, List<Question> questions) {
         this.difficulty = difficulty;
         for (Question question : questions) {
             this.questions.add(question);
