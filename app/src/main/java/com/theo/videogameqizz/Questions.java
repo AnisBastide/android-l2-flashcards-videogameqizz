@@ -73,6 +73,7 @@ public class Questions implements Parcelable {
         for (Question question : questions) {
             this.questions.add(question);
         }
+        Collections.shuffle(this.questions);
     }
 
     @Override
@@ -97,4 +98,6 @@ public class Questions implements Parcelable {
         }
         dest.writeString(difficulty);
     }
+
+
 }
