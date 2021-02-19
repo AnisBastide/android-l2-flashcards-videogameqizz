@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -55,8 +56,13 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         imageView.setOnClickListener(this);
 
         Intent intent = getIntent();
+        String difficultyIntent = intent.getStringExtra("DifficultyString");
+
+        Log.d("theotagdifficulty", difficultyIntent);
+
         if(intent != null && intent.hasExtra("questions")){
         this.questions =intent.getParcelableExtra("questions");
+        
         if(this.questions.getIndex()==this.questions.getQuestions().size()){
             Intent result = new Intent(this,ResultActivity.class);
             result.putExtra("questions",questions);
@@ -67,15 +73,47 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         question=this.questions.getQuestions().get(this.questions.getIndex());
         }
         else{
-            Question questionTest = new Question("Quel est ce jeu?",R.drawable.supersmashbros,
-                    new Answer("super smash bros","mario","call of duty")
-            );
-            Question questionTestTwo = new Question("Quel est ce jeu 2?",R.drawable.supersmashbros,
-                    new Answer("super smash bros","mario","call of duty")
-            );
-            this.questions = new Questions("easy",questionTest,questionTestTwo);
-            this.questions.shuffleQuestions();
-            question=this.questions.getQuestions().get(this.questions.getIndex());
+            if(difficultyIntent == "Easy") {
+                Question questionTest = new Question("Quel est ce jeu?", R.drawable.supersmashbros,
+                        new Answer("super smash bros", "mario", "call of duty")
+                );
+                Question questionTestTwo = new Question("Quel est ce jeu 2?", R.drawable.supersmashbros,
+                        new Answer("super smash bros", "mario", "call of duty")
+                );
+                this.questions = new Questions("easy", questionTest, questionTestTwo);
+                this.questions.shuffleQuestions();
+                question = this.questions.getQuestions().get(this.questions.getIndex());
+                return;
+            }
+
+
+            if(difficultyIntent == "Medium"){
+                Question questionTest = new Question("Quel est ce jeezrreezraonizbiobzaiobarzu?", R.drawable.supersmashbros,
+                        new Answer("super smash bros", "mario", "call of duty")
+                );
+                Question questionTestTwo = new Question("Quel est ce jeu 2?", R.drawable.supersmashbros,
+                        new Answer("super smash bros", "mario", "call of duty")
+                );
+                this.questions = new Questions("easy", questionTest, questionTestTwo);
+                this.questions.shuffleQuestions();
+                question = this.questions.getQuestions().get(this.questions.getIndex());
+                return;
+            }
+
+
+            if(difficultyIntent == "Hard"){
+                Question questionTest = new Question("Quel est ce jeu?feifebofeobie", R.drawable.supersmashbros,
+                        new Answer("super smash bros", "mario", "call of duty")
+                );
+                Question questionTestTwo = new Question("Quel est ce jeu 2?", R.drawable.supersmashbros,
+                        new Answer("super smash bros", "mario", "call of duty")
+                );
+                this.questions = new Questions("easy", questionTest, questionTestTwo);
+                this.questions.shuffleQuestions();
+                question = this.questions.getQuestions().get(this.questions.getIndex());
+                return;
+            }
+
         }
         setQuestionView(question);
     }

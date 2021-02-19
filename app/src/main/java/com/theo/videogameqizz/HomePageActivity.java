@@ -64,12 +64,15 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(about);
                 break;
             case R.id.easyButton:
+                questions.putExtra("DifficultyString", "Easy");
                 startActivity(questions);
                 break;
             case R.id.mediumButton:
+                questions.putExtra("DifficultyString", "Medium");
                 startActivity(questions);
                 break;
             case R.id.hardButton:
+                questions.putExtra("DifficultyString", "Hard");
                 startActivity(questions);
                 break;
         }
