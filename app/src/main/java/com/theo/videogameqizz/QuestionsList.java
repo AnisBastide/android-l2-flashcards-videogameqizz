@@ -13,11 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder> implements View.OnClickListener {
 
     private final List<Question> questions;
+    Question question;
 
     public QuestionsList(List<Question> questions) {
         this.questions = questions;
@@ -33,7 +35,7 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull QuestionsList.ViewHolder holder, int position) {
-        Question question = questions.get(position);
+        question = questions.get(position);
 
         switch (question.getMedia().getType()) {
             case "image":
@@ -47,7 +49,6 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
             default:
                 break;
         }
-
         holder.questions.setText(question.question);
         holder.answer1.setText(question.answer.getGoodAnswer());
         holder.answer2.setText(question.answer.getOtherAnswerOne());
@@ -65,8 +66,11 @@ public class QuestionsList extends RecyclerView.Adapter<QuestionsList.ViewHolder
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.questionCardLayout:
+                List<Question> quest = new ArrayList<>();
+                quest.add(question);
                 Context context = view.getContext();
                 Intent questions = new Intent(context,FlashCardActivity.class);
+                questions.putExtra("questions", new Questions("", quest));
                 context.startActivity(questions);
                 break;
         }
