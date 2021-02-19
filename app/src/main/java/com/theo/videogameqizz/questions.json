@@ -1,0 +1,98 @@
+{
+  "easy": [
+    {
+      "question": "Quel est ce jeu ?",
+      "answer": {
+        "goodAnswer": "Super Smash Bros",
+        "otherAnswerOne": "Mario",
+        "otherAnswerTwo": "Call of Duty"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://www.gamereactor.fr/media/92/supersmashbros_2679253b.jpg"
+    },
+    {
+      "question": "Quel est ce jeu ?",
+      "answer": {
+        "goodAnswer": "Fortnite",
+        "otherAnswerOne": "PUBG",
+        "otherAnswerTwo": "H1Z1"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://imag.malavida.com/mvimgbig/download-fs/fortnite-20588-3.jpg"
+    },
+    {
+      "question": "Quel est ce jeu ?",
+      "answer": {
+        "goodAnswer": "Zelda Breath of the wild",
+        "otherAnswerOne": "Zelda Ocarina of time",
+        "otherAnswerTwo": "Zelda Oracle of season"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://www.technobuffalo.com/sites/technobuffalo.com/files/styles/large/public/wp/2016/06/legend-of-zelda-breath-of-the-wild-screenshots-01.jpg"
+    }
+  ],
+  "normal": [
+    {
+      "question": "Quel est ce jeu ?",
+      "answer": {
+        "goodAnswer": "Persona 5",
+        "otherAnswerOne": "Divinity Original Sin",
+        "otherAnswerTwo": "Mario et Luigi"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://blog.francetvinfo.fr/popup/wp-content/blogs.dir/373/files/2017/04/Converted_9-1024x581.jpg"
+    },
+    {
+      "question": "Quel est ce jeu ?",
+      "answer": {
+        "goodAnswer": "Geralt de Riv",
+        "otherAnswerOne": "Gutz",
+        "otherAnswerTwo": "Garen"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://cdn.mos.cms.futurecdn.net/3ZbPC5LNRVccsePfX2PbM7.jpg"
+    },
+    {
+      "question": "Quelle est cette map ?",
+      "answer": {
+        "goodAnswer": "Yacht",
+        "otherAnswerOne": "Nuketown",
+        "otherAnswerTwo": "Terminal"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://i.pinimg.com/originals/95/48/70/954870e11c80c069df85c46e7595c954.jpg"
+    }
+  ],
+  "hard": [
+    {
+      "question": "Quel est ce jeu ?",
+      "answer": {
+        "goodAnswer": "Final Fantasy 6",
+        "otherAnswerOne": "Final Fantasy 6",
+        "otherAnswerTwo": "Dragon Quest 6"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://new-game-plus.fr/wp-content/uploads/2020/04/Final-Fantasy-VI-Atma.jpg"
+    },
+    {
+      "question": "Qui est ce boss?",
+      "answer": {
+        "goodAnswer": "Boreas",
+        "otherAnswerOne": "Tartaglia",
+        "otherAnswerTwo": "Stormterror"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://www.gamereactor.fr/media/96/_3229673b.png"
+    },
+    {
+      "question": "Qui est le premier seigneur des cendres de Dark Soul 1 ?",
+      "answer": {
+        "goodAnswer": "Gwen",
+        "otherAnswerOne": "Gwendir",
+        "otherAnswerTwo": "Gundir"
+      },
+      "mediaType": "image",
+      "mediaLink": "https://www.skritz.com/wp-content/uploads/2014/03/dark-souls-gwyn.jpg"
+    }
+  ]
+}
