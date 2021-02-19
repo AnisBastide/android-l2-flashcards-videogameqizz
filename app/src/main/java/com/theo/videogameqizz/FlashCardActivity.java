@@ -56,13 +56,13 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         imageView.setOnClickListener(this);
 
         Intent intent = getIntent();
-        String difficultyIntent = intent.getStringExtra("DifficultyString");
+        Integer difficultyIntent = intent.getIntExtra("DifficultyString", 0);
 
-        Log.d("theotagdifficulty", difficultyIntent);
+        Log.d("theotagdifficulty", difficultyIntent + "");
 
         if(intent != null && intent.hasExtra("questions")){
         this.questions =intent.getParcelableExtra("questions");
-        
+
         if(this.questions.getIndex()==this.questions.getQuestions().size()){
             Intent result = new Intent(this,ResultActivity.class);
             result.putExtra("questions",questions);
@@ -73,42 +73,50 @@ public class FlashCardActivity extends AppCompatActivity implements View.OnClick
         question=this.questions.getQuestions().get(this.questions.getIndex());
         }
         else{
-            if(difficultyIntent == "Easy") {
+            if(difficultyIntent == 1) {
                 Question questionTest = new Question("Quel est ce jeu?", R.drawable.supersmashbros,
                         new Answer("super smash bros", "mario", "call of duty")
                 );
-                Question questionTestTwo = new Question("Quel est ce jeu 2?", R.drawable.supersmashbros,
-                        new Answer("super smash bros", "mario", "call of duty")
-                );
-                this.questions = new Questions("easy", questionTest, questionTestTwo);
+                Question questionTestTwo = new Question("Quel est ce jeu ?",R.drawable.fortnite,
+                        new Answer("Fortinte","PUBG","H1Z1"));
+
+                Question questionTestTree = new Question("Quel est ce jeu ?",R.drawable.legendofzeldabreathofthewild,
+                        new Answer("Zelda Breath of the wild","Zelda Ocarina of time","Zelda Oracle of season"));
+
+                this.questions = new Questions("Easy", questionTest, questionTestTwo, questionTestTree);
                 this.questions.shuffleQuestions();
                 question = this.questions.getQuestions().get(this.questions.getIndex());
                 return;
             }
 
 
-            if(difficultyIntent == "Medium"){
-                Question questionTest = new Question("Quel est ce jeezrreezraonizbiobzaiobarzu?", R.drawable.supersmashbros,
-                        new Answer("super smash bros", "mario", "call of duty")
+            if(difficultyIntent == 2){
+                Question questionTest = new Question("Quel est ce jeu ?",R.drawable.persona,
+                        new Answer("Persona 5","Divinity Original Sin","Mario et Luigi")
                 );
-                Question questionTestTwo = new Question("Quel est ce jeu 2?", R.drawable.supersmashbros,
-                        new Answer("super smash bros", "mario", "call of duty")
-                );
-                this.questions = new Questions("easy", questionTest, questionTestTwo);
+                Question questionTestTwo = new Question("Comment s’appelle ce protagoniste ?",R.drawable.geralt,
+                        new Answer("Geralt de Riv","Gutz","Garen"));
+
+                Question questionTestTree = new Question("Comment s’appelle cette map de Call of duty ?",R.drawable.blackopmap,
+                        new Answer("yacht","nuketown","Terminal"));
+
+                this.questions = new Questions("Meduim", questionTest, questionTestTwo, questionTestTree);
                 this.questions.shuffleQuestions();
                 question = this.questions.getQuestions().get(this.questions.getIndex());
                 return;
             }
 
 
-            if(difficultyIntent == "Hard"){
-                Question questionTest = new Question("Quel est ce jeu?feifebofeobie", R.drawable.supersmashbros,
-                        new Answer("super smash bros", "mario", "call of duty")
-                );
-                Question questionTestTwo = new Question("Quel est ce jeu 2?", R.drawable.supersmashbros,
-                        new Answer("super smash bros", "mario", "call of duty")
-                );
-                this.questions = new Questions("easy", questionTest, questionTestTwo);
+            if(difficultyIntent == 3){
+                Question questionTest = new Question("Quel est ce jeux video ?",R.drawable.finalfantasyvi,
+                        new Answer("Final Fantasy 6","Final Fantasy 5","Dragon Quest 6"));
+
+                Question questionTestTwo = new Question("Qui est ce Boss ?",R.drawable.genshinimpact,
+                        new Answer("boreas","Sif","Rock"));
+
+                Question questionTestTree = new Question("Qui est le premier seigneur des cendres de dark soul 1 ?",R.drawable.darksoulsgwyn,
+                        new Answer("Gwen","Gwendir","Gundir"));
+                this.questions = new Questions("Hard", questionTest, questionTestTwo, questionTestTree);
                 this.questions.shuffleQuestions();
                 question = this.questions.getQuestions().get(this.questions.getIndex());
                 return;
